@@ -20,12 +20,12 @@ companiesController.list = async function (req, res) {
         privileges.global.can('group:create', req.uid),
     ]);
 
-    res.render('groups/list', {
+    res.render('companies/list', {
         groups: groupData,
         allowGroupCreation: allowGroupCreation,
         nextStart: 15,
-        title: '[[pages:groups]]',
-        breadcrumbs: helpers.buildBreadcrumbs([{ text: '[[pages:groups]]' }]),
+        title: '[[pages:companies]]',
+        breadcrumbs: helpers.buildBreadcrumbs([{ text: '[[pages:companies]]' }]),
     });
 };
 

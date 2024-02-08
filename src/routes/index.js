@@ -108,7 +108,7 @@ _mounts.groups = (app, name, middleware, controllers) => {
 
 _mounts.companies = (app, name, middleware, controllers) => {
   const middlewares = [middleware.canViewGroups];
-  setupPageRoute(app, `/companies`, middlewares, controllers.groups.list);
+  setupPageRoute(app, `/companies`, middlewares, controllers.companies.list);
 };
 
 
