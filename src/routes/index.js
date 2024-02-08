@@ -101,11 +101,17 @@ _mounts.users = (app, name, middleware, controllers) => {
 
 _mounts.groups = (app, name, middleware, controllers) => {
     const middlewares = [middleware.canViewGroups];
-
     setupPageRoute(app, `/${name}`, middlewares, controllers.groups.list);
     setupPageRoute(app, `/${name}/:slug`, middlewares, controllers.groups.details);
     setupPageRoute(app, `/${name}/:slug/members`, middlewares, controllers.groups.members);
 };
+
+_mounts.companies = (app, name, middleware, controllers) => {
+  const middlewares = [middleware.canViewGroups];
+  setupPageRoute(app, `/companies`, middlewares, controllers.groups.list);
+};
+
+
 
 module.exports = async function (app, middleware) {
     const router = express.Router();
@@ -114,7 +120,7 @@ module.exports = async function (app, middleware) {
     };
 
     // Allow plugins/themes to mount some routes elsewhere
-    const remountable = ['admin', 'category', 'topic', 'post', 'users', 'user', 'groups', 'tags', 'career'];
+    const remountable = ['admin', 'category', 'topic', 'post', 'users', 'user', 'groups', 'companies','tags', 'career'];
     const { mounts } = await plugins.hooks.fire('filter:router.add', {
         mounts: remountable.reduce((memo, mount) => {
             memo[mount] = mount;

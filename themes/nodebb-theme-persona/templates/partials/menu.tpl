@@ -138,8 +138,8 @@
                             <li role="presentation" class="divider"></li>
                             <li class="dropdown-header">[[pages:moderator-tools]]</li>
                             <li>
-                                <a href="{relative_path}/my-company">
-                                    <i class="fa fa-fw fa-list-alt"></i> <span>[[pages:my-company]]</span>
+                                <a href="{relative_path}/companies">
+                                    <i class="fa fa-fw fa-list-alt"></i> <span>[[pages:companies]]</span>
                                 </a>
                             </li>
                             <li>
