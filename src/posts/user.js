@@ -48,7 +48,6 @@ module.exports = function (Posts) {
             }
             userData.signature = signature;
             userData.custom_profile_info = customProfileInfo.profile;
-            userData.isRecruiter = userData.accounttype === 'recruiter';
 
             return await plugins.hooks.fire('filter:posts.modifyUserInfo', userData);
         }));
