@@ -12,10 +12,8 @@
         </strong>
 
         <!-- IF posts.user.isRecruiter -->
-            <span>{posts.user.accounttype}</span>
+            <i class="fa fa-briefcase recruiter-badge"></i>
         <!-- ENDIF posts.user.isRecruiter -->
-        <span>{posts.user.accounttype}</span>
-        <span>{posts.user.isRecruiter}</span>
 
         <!-- IMPORT partials/topic/badge.tpl -->
 
