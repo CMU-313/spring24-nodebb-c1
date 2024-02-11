@@ -75,12 +75,6 @@
             <span class="human-readable-number">{topics.postcount}</span> <a href="{config.relative_path}/topic/{topics.slug}/{topics.teaser.index}"><i class="fa fa-arrow-circle-right"></i></a>
         </div>
 
-        <div class="col-md-1 hidden-sm hidden-xs stats ">
-            <!-- IF !reputation:disabled -->
-            <small>Unresolved</small>
-            <!-- END -->
-        </div>
-
         <div class="col-md-1 hidden-sm hidden-xs stats stats-votes">
             <!-- IF !reputation:disabled -->
             <span class="human-readable-number" title="{topics.votes}">{topics.votes}</span><br />
@@ -96,6 +90,12 @@
         <div class="col-md-1 hidden-sm hidden-xs stats stats-viewcount">
             <span class="human-readable-number" title="{topics.viewcount}">{topics.viewcount}</span><br />
             <small>[[global:views]]</small>
+        </div>
+
+        <div class="col-md-1 hidden-sm hidden-xs stats ">
+            <!-- IF !reputation:disabled -->
+            <small>Unresolved</small>
+            <!-- END -->
         </div>
 
         <div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
