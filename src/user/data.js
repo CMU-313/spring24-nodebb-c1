@@ -78,7 +78,6 @@ module.exports = function (User) {
             if (uniqueUids[index] > 0 && !user.uid) {
                 user.oldUid = uniqueUids[index];
             }
-            user.isRecruiter = user.accounttype === 'recruiter';
         });
         await modifyUserData(result.users, fields, fieldsToRemove);
         return uidsToUsers(uids, uniqueUids, result.users);
