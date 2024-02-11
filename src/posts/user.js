@@ -48,6 +48,7 @@ module.exports = function (Posts) {
             }
             userData.signature = signature;
             userData.custom_profile_info = customProfileInfo.profile;
+            userData.isRecruiter = userData.accounttype === 'recruiter';
 
             return await plugins.hooks.fire('filter:posts.modifyUserInfo', userData);
         }));
@@ -104,7 +105,7 @@ module.exports = function (Posts) {
             'uid', 'username', 'fullname', 'userslug',
             'reputation', 'postcount', 'topiccount', 'picture',
             'signature', 'banned', 'banned:expire', 'status',
-            'lastonline', 'groupTitle', 'mutedUntil',
+            'lastonline', 'groupTitle', 'mutedUntil', 'accounttype'
         ];
         const result = await plugins.hooks.fire('filter:posts.addUserFields', {
             fields: fields,

@@ -11,6 +11,12 @@
             <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}">{posts.user.displayname}</a>
         </strong>
 
+        <!-- IF posts.user.isRecruiter -->
+            <span>{posts.user.accounttype}</span>
+        <!-- ENDIF posts.user.isRecruiter -->
+        <span>{posts.user.accounttype}</span>
+        <span>{posts.user.isRecruiter}</span>
+
         <!-- IMPORT partials/topic/badge.tpl -->
 
         <!-- IF posts.user.banned -->
