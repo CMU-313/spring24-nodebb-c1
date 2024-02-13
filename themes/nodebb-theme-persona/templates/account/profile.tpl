@@ -2,7 +2,13 @@
     <!-- IMPORT partials/account/header.tpl -->
 
     <div class="profile row">
-        <h1 class="fullname"><!-- IF fullname -->{fullname}<!-- ELSE -->{username}<!-- ENDIF fullname --></h1>
+        <h1 class="fullname"><!-- IF fullname -->{fullname}<!-- ELSE -->{username}<!-- ENDIF fullname -->
+            <span>
+                {{{ if (accounttype == "recruiter") }}}
+                    <i class="fa fa-briefcase recruiter-badge"></i>
+                {{{ end }}}
+            </span>
+        </h1>
         <h2 class="username"><!-- IF !banned -->@{username}<!-- ELSE -->[[user:banned]]<!-- ENDIF !banned --></h2>
         <!-- IF isAdminOrGlobalModeratorOrModerator -->
         <!-- IF banned -->
