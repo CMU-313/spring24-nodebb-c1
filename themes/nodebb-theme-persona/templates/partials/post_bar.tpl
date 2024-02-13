@@ -4,6 +4,10 @@
     </span>
 
     <!-- IF loggedIn -->
+    <button component="topic/mark-resolved" class="btn btn-sm btn-default" title="[[topic:mark_resolved]]">
+        <i class="fa fa-fw fa-inbox"></i><span class="visible-sm-inline visible-md-inline visible-lg-inline"></span>
+    </button>
+
     <button component="topic/mark-unread" class="btn btn-sm btn-default" title="[[topic:mark_unread]]">
         <i class="fa fa-fw fa-inbox"></i><span class="visible-sm-inline visible-md-inline visible-lg-inline"></span>
     </button>
