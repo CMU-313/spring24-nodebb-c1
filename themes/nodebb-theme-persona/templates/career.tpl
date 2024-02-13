@@ -6,9 +6,9 @@
 </div>
 <div class="row">
     <div class="<!-- IF widgets.sidebar.length -->col-lg-9 col-sm-12<!-- ELSE -->col-lg-12<!-- ENDIF widgets.sidebar.length -->">
-        <h1 class="career-title">Career</h1>
+        <h1 class="career-title">Companies</h1>
         <p>
-            Welcome to the careers page! This is a brand new feature added to allow 
+            Welcome to the companies page! This is a brand new feature added to allow
             students to connect with various job recruiters.
         </p>
         This page is still under development.
