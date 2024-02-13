@@ -142,6 +142,7 @@
     "composer.title_placeholder": "Enter your topic title here...",
     "composer.handle_placeholder": "Enter your name/handle here",
     "composer.discard": "Discard",
+    "composer.draft": "Save as Draft",
     "composer.submit": "Submit",
     "composer.additional-options": "Additional Options",
     "composer.schedule": "Schedule",
