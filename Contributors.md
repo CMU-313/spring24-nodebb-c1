@@ -117,7 +117,7 @@
                     <tr>
                     <tr>
                         <th align="left">
-                            Comments: 0
+                            Comments: 1
                         </th>
                     <tr>
                 </table>
@@ -243,7 +243,7 @@
                     <tr>
                     <tr>
                         <th align="left">
-                            Comments: 0
+                            Comments: 1
                         </th>
                     <tr>
                 </table>
@@ -306,7 +306,7 @@
                     <tr>
                     <tr>
                         <th align="left">
-                            Comments: 2
+                            Comments: 4
                         </th>
                     <tr>
                 </table>
