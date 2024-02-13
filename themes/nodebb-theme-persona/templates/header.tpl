@@ -21,7 +21,7 @@
     {{{end}}}
 </head>
 
-<body id="pageBody" class="{bodyClass} skin-{{{if bootswatchSkin}}}{bootswatchSkin}{{{else}}}noskin{{{end}}}"  >
+<body class="{bodyClass} skin-{{{if bootswatchSkin}}}{bootswatchSkin}{{{else}}}noskin{{{end}}}"  >
     <nav id="menu" class="slideout-menu hidden ">
         <!-- IMPORT partials/slideout-menu.tpl -->
     </nav>

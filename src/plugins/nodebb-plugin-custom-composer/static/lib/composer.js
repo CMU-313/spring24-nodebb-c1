@@ -306,9 +306,7 @@ define('composer', [
 	};
 
 	composer.enhance = function (postContainer, post_uuid, postData) {
-		//$("#pageBody").css("pointer-events", "none")
-		
-		console.log("composer")
+
 		document.getElementById("panel").style.pointerEvents = "none"
 		/*
 			This method enhances a composer container with client-side sugar (preview, etc)
