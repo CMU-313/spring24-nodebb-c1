@@ -310,7 +310,7 @@ define('composer', [
 			This method enhances a composer container with client-side sugar (preview, etc)
 			Everything in here also applies to the /compose route
 		*/
-
+		document.getElementById('panel').style.pointerEvents = 'panel';
 		if (!post_uuid && !postData) {
 			post_uuid = utils.generateUUID();
 			composer.posts[post_uuid] = ajaxify.data;
@@ -343,7 +343,7 @@ define('composer', [
 		submitBtn.on('click', function (e) {
 			e.preventDefault();
 			e.stopPropagation(); // Other click events bring composer back to active state which is undesired on submit
-
+			document.getElementById('panel').style.pointerEvents = 'panel';
 			$(this).attr('disabled', true);
 			post(post_uuid);
 		});
@@ -355,7 +355,18 @@ define('composer', [
 			});
 		});
 
+		postContainer.find('.composer-draft').on('click', function(e) {
+			document.getElementById('panel').style.pointerEvents = 'auto';
+			e.preventDefault();
+
+			composer.saveAsDraft(post_uuid);
+
+			formatting.exitFullscreen();
+		});
+
+
 		postContainer.find('.composer-discard').on('click', function (e) {
+			document.getElementById('panel').style.pointerEvents = 'auto';
 			e.preventDefault();
 
 			if (!composer.posts[post_uuid].modified) {
@@ -817,6 +828,25 @@ define('composer', [
 		scheduler.reset();
 		onHide();
 	};
+
+    composer.saveAsDraft = function (post_uuid) {
+		if (composer.posts[post_uuid]) {
+			var postData = composer.posts[post_uuid];
+			var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
+			postContainer.remove();
+
+			taskbar.discard('composer', post_uuid);
+			$('[data-action="post"]').removeAttr('disabled');
+
+            hooks.fire('action:composer.saveAsDraft'), {
+                post_uuid: post_uuid,
+				postData: postData,
+            }
+			composer.active = undefined;
+		}
+		scheduler.reset();
+		onHide();
+    }
 
 	// Alias to .discard();
 	composer.close = composer.discard;
