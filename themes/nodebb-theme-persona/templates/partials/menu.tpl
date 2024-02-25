@@ -137,6 +137,11 @@
                             <li role="presentation" class="divider"></li>
                             <li class="dropdown-header">[[pages:moderator-tools]]</li>
                             <li>
+                                <a href="{relative_path}/companies">
+                                    <i class="fa fa-fw fa-list-alt"></i> <span>Companies</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{relative_path}/flags">
                                     <i class="fa fa-fw fa-flag"></i> <span>[[pages:flagged-content]]</span>
                                 </a>
