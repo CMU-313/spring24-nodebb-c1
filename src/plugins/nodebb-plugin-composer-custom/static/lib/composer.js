@@ -830,22 +830,7 @@ define('composer', [
 	};
 
     composer.saveAsDraft = function (post_uuid) {
-		if (composer.posts[post_uuid]) {
-			var postData = composer.posts[post_uuid];
-			var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
-			postContainer.remove();
-
-			taskbar.discard('composer', post_uuid);
-			$('[data-action="post"]').removeAttr('disabled');
-
-            hooks.fire('action:composer.saveAsDraft'), {
-                post_uuid: post_uuid,
-				postData: postData,
-            }
-			composer.active = undefined;
-		}
-		scheduler.reset();
-		onHide();
+		composer.minimize(post_uuid);
     }
 
 	// Alias to .discard();
