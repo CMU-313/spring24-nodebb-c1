@@ -109,7 +109,7 @@ _mounts.groups = (app, name, middleware, controllers) => {
 
 _mounts.companies = (app, name, middleware, controllers) => {
     const middlewares = [middleware.canViewGroups];
-    setupPageRoute(app, `/companies`, middlewares, controllers.groups.list);
+    setupPageRoute(app, `/companies`, middlewares, controllers.companies.list);
 };
 
 module.exports = async function (app, middleware) {
@@ -127,6 +127,7 @@ module.exports = async function (app, middleware) {
             return memo;
         }, {}),
     });
+
     // Guard against plugins sending back missing/extra mounts
     Object.keys(mounts).forEach((mount) => {
         if (!remountable.includes(mount)) {
