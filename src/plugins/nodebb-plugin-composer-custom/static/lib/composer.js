@@ -70,7 +70,6 @@ define('composer', [
 
 		//adds gray background to draw attention to new post
 		$('#gray-overlay').css('visibility', 'visible');
-
 		//disables scrolling for y axis
 		$("body").css({"overflow-y":"hidden"})
 		$("html").css({"overflow-y":"hidden"}) 
@@ -81,7 +80,6 @@ define('composer', [
 
 		//turn off gray background
 		$('#gray-overlay').css('visibility', 'hidden');
-
 		//re-enables scrolling for y axis
 		$("body").css({"overflow-y":"auto"})
 		$("html").css({"overflow-y":"auto"})
@@ -632,7 +630,6 @@ define('composer', [
 		if (composer.active && composer.active !== post_uuid) {
 			composer.minimize(composer.active);
 		}
-		//disableBackgroundInteraction(); //apply css changes when a new post draft is unminimized
 		composer.active = post_uuid;
 		$(window).trigger('action:composer.activate', {
 			post_uuid: post_uuid,

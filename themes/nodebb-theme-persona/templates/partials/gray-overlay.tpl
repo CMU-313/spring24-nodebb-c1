@@ -1,3 +1,3 @@
-<div id="gray-overlay">
+<div id="gray-overlay" style="hidden">
     
 </div>

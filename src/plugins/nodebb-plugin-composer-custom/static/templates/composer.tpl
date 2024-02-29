@@ -1,5 +1,4 @@
 <div component="composer" class="composer<!-- IF resizable --> resizable<!-- ENDIF resizable --><!-- IF !isTopicOrMain --> reply<!-- ENDIF !isTopicOrMain -->">
-	
 	<div class="composer-container">
 		<nav class="navbar navbar-fixed-top mobile-navbar hidden-md hidden-lg">
 			<div class="btn-group">
@@ -137,6 +136,6 @@
 		<!-- ENDIF isTopicOrMain -->
 
 		<div class="imagedrop"><div>[[topic:composer.drag_and_drop_images]]</div></div>
-		<!-- IMPORT partials/gray-overlay.tpl -->
 	</div>
 </div>
+<!-- IMPORT partials/gray-overlay.tpl -->
