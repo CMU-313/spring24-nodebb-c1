@@ -310,7 +310,7 @@ define('composer', [
 			This method enhances a composer container with client-side sugar (preview, etc)
 			Everything in here also applies to the /compose route
 		*/
-
+		document.getElementById("panel").style.pointerEvents = "none" 
 		if (!post_uuid && !postData) {
 			post_uuid = utils.generateUUID();
 			composer.posts[post_uuid] = ajaxify.data;
@@ -343,7 +343,7 @@ define('composer', [
 		submitBtn.on('click', function (e) {
 			e.preventDefault();
 			e.stopPropagation(); // Other click events bring composer back to active state which is undesired on submit
-
+			document.getElementById("panel").style.pointerEvents = "auto"
 			$(this).attr('disabled', true);
 			post(post_uuid);
 		});
@@ -356,6 +356,7 @@ define('composer', [
 		});
 
 		postContainer.find('.composer-discard').on('click', function (e) {
+			document.getElementById("panel").style.pointerEvents = "auto"
 			e.preventDefault();
 
 			if (!composer.posts[post_uuid].modified) {
