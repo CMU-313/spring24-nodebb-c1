@@ -34,5 +34,14 @@
         "color": "#ffffff",
         "icon" : "fa-question",
         "order": 3
+    },
+    {
+        "name": "Job Postings",
+        "description": "Check job postings from recruiters",
+        "descriptionParsed": "<p>Check job postings from recruiters</p>\n",
+        "bgColor": "#dbb125",
+        "color": "#ffffff",
+        "icon": "fa-briefcase",
+        "order": 5
     }
 ]
