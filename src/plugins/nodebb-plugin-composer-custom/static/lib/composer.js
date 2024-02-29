@@ -344,7 +344,10 @@ define('composer', [
 		submitBtn.on('click', function (e) {
 			e.preventDefault();
 			e.stopPropagation(); // Other click events bring composer back to active state which is undesired on submit
-			document.getElementById("panel").style.pointerEvents = "auto"
+
+			document.getElementById("panel").style.pointerEvents = "auto"//re-enable interaction with background
+			$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
+
 			$(this).attr('disabled', true);
 			post(post_uuid);
 		});
@@ -357,7 +360,10 @@ define('composer', [
 		});
 
 		postContainer.find('.composer-discard').on('click', function (e) {
-			document.getElementById("panel").style.pointerEvents = "auto"
+ 
+			document.getElementById("panel").style.pointerEvents = "auto"//re-enable interaction with background
+			$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
+
 			e.preventDefault();
 
 			if (!composer.posts[post_uuid].modified) {
@@ -826,7 +832,6 @@ define('composer', [
 	composer.minimize = function (post_uuid) {
 		var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
 		postContainer.css('visibility', 'hidden');
-		$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
 		composer.active = undefined;
 		taskbar.minimize('composer', post_uuid);
 		$(window).trigger('action:composer.minimize', {
