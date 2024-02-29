@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,28 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const assert = require('assert');
-const async = require('async');
-const fs = require('fs');
-const path = require('path');
-const nconf = require('nconf');
-const db = require('./mocks/databasemock');
-const helpers = require('./helpers');
-const Groups = require('../src/groups');
-const User = require('../src/user');
-const meta = require('../src/meta');
-const navigation = require('../src/navigation/admin');
-const Categories = require('../src/categories');
-const privileges = require('../src/privileges');
-const install = require('../src/install');
+Object.defineProperty(exports, "__esModule", { value: true });
+const assert = require("assert");
+const Groups = require("../src/groups");
+const User = require("../src/user");
+const Categories = require("../src/categories");
+const privileges = require("../src/privileges");
 describe('Groups', () => {
     let adminUid;
     let studentUid;
     let recruiterUid;
     let jobPostingsCategory;
     before(() => __awaiter(void 0, void 0, void 0, function* () {
-        const navData = require('../install/data/navigation.json');
-        yield navigation.save(navData);
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         yield Groups.create({
             name: 'Recruiters',
             userTitle: 'Recruiters',
@@ -38,37 +30,49 @@ describe('Groups', () => {
             private: 1,
             disableJoinRequests: 1,
         });
-        studentUid = yield User.create({
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        studentUid = (yield User.create({
             username: 'student',
             email: 'student@test.com',
-        });
-        adminUid = yield User.create({
+        }));
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        adminUid = (yield User.create({
             username: 'admin',
             email: 'admin@test.com',
-        });
+        }));
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         yield Groups.join('administrators', adminUid);
-        recruiterUid = yield User.create({
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        recruiterUid = (yield User.create({
             username: 'recruiter',
             email: 'recruiter@test.com',
-            accounttype: 'recruiter'
-        });
+            accounttype: 'recruiter',
+        }));
     }));
-    it('Recruiters group should have one member', (done) => {
-        Groups.get('Recruiters', {}, (err, groupObj) => {
+    it('Recruiters group should have one member', (done) => __awaiter(void 0, void 0, void 0, function* () {
+        yield Groups.get('Recruiters', {}, (err, groupObj) => {
             assert.ifError(err);
             assert.strictEqual(groupObj.name, 'Recruiters');
             assert.strictEqual(groupObj.memberCount, 1);
             done();
         });
-    });
-    it('recruiter user should automatically be in the Recruiters group', (done) => {
-        Groups.isMember(recruiterUid, 'Recruiters', (err, isMember) => {
+    }));
+    it('recruiter user should automatically be in the Recruiters group', (done) => __awaiter(void 0, void 0, void 0, function* () {
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        yield Groups.isMember(recruiterUid, 'Recruiters', (err, isMember) => {
             assert.ifError(err);
             assert.strictEqual(isMember, true);
             done();
         });
-    });
+    }));
     it('student user should not be in the Recruiters group', (done) => {
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         Groups.isMember(studentUid, 'Recruiters', (err, isMember) => {
             assert.ifError(err);
             assert.strictEqual(isMember, false);
@@ -76,6 +80,8 @@ describe('Groups', () => {
         });
     });
     it('admin user should not be in the Recruiters group', (done) => {
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         Groups.isMember(adminUid, 'Recruiters', (err, isMember) => {
             assert.ifError(err);
             assert.strictEqual(isMember, false);
@@ -83,6 +89,8 @@ describe('Groups', () => {
         });
     });
     it('should create a new job postings category', (done) => {
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         Categories.create({
             name: 'Job Postings',
             description: 'Check job postings from recruiters',
@@ -104,7 +112,7 @@ describe('Groups', () => {
         ];
         yield Promise.all([
             privileges.categories.rescind(postingPrivileges, jobPostingsCategory.cid, 'registered-users'),
-            privileges.categories.give(postingPrivileges, jobPostingsCategory.cid, 'Recruiters')
+            privileges.categories.give(postingPrivileges, jobPostingsCategory.cid, 'Recruiters'),
         ]);
     }));
     it('recruiters should have posting privileges on job postings category', () => __awaiter(void 0, void 0, void 0, function* () {

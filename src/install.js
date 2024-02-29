@@ -481,14 +481,14 @@ async function createJobPostingsCategory() {
 
     const data =
     {
-        "name": "Job Postings",
-        "description": "Check job postings from recruiters",
-        "descriptionParsed": "<p>Check job postings from recruiters</p>\n",
-        "bgColor": "#dbb125",
-        "color": "#ffffff",
-        "icon": "fa-briefcase",
-        "order": 5
-    }
+        name: 'Job Postings',
+        description: 'Check job postings from recruiters',
+        descriptionParsed: '<p>Check job postings from recruiters</p>\n',
+        bgColor: '#dbb125',
+        color: '#ffffff',
+        icon: 'fa-briefcase',
+        order: 5,
+    };
     const jobPostings = await Categories.create(data);
 
     const postingPrivileges = [
@@ -500,7 +500,7 @@ async function createJobPostingsCategory() {
 
     await Promise.all([
         privileges.categories.rescind(postingPrivileges, jobPostings.cid, 'registered-users'),
-        privileges.categories.give(postingPrivileges, jobPostings.cid, 'Recruiters')
+        privileges.categories.give(postingPrivileges, jobPostings.cid, 'Recruiters'),
     ]);
 }
 

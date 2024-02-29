@@ -108,7 +108,7 @@ module.exports = function (User) {
             User.updateDigestSetting(userData.uid, meta.config.dailyDigestFreq),
         ]);
 
-        if (userData.accounttype == 'recruiter') {
+        if (userData.accounttype === 'recruiter') {
             await groups.join('Recruiters', userData.uid);
         }
 
