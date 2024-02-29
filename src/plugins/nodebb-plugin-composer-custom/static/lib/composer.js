@@ -355,7 +355,14 @@ define('composer', [
 			});
 		});
 
+        /* JavaScript event listener
+        *  input type : object
+        *  output None
+        *  Calls the save as draft function on a post when the save draft button is clicked
+        *  */
 		postContainer.find('.composer-draft').on('click', function(e) {
+            console.assert(typeof e === "object");
+
 			document.getElementById('panel').style.pointerEvents = 'auto';
 			e.preventDefault();
 
@@ -829,9 +836,14 @@ define('composer', [
 		onHide();
 	};
 
+    /* Saves a work in progress post as a draft and closes composer
+    *  input: post_uuid : number
+    *  output: none
+    * */
     composer.saveAsDraft = function (post_uuid) {
+		console.assert(typeof post_uuid === "string");
 		composer.minimize(post_uuid);
-    }
+    };
 
 	// Alias to .discard();
 	composer.close = composer.discard;
