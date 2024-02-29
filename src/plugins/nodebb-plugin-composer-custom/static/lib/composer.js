@@ -312,6 +312,8 @@ define('composer', [
 		*/
 		document.getElementById("panel").style.pointerEvents = "none" 
 		$('#gray-overlay').css('visibility', 'visible');//gray background also needs to be shown
+		$("body").css({"overflow-y":"hidden"})
+		$("html").css({"overflow-y":"hidden"}) //disables scrolling
 		if (!post_uuid && !postData) {
 			post_uuid = utils.generateUUID();
 			composer.posts[post_uuid] = ajaxify.data;
@@ -347,6 +349,8 @@ define('composer', [
 
 			document.getElementById("panel").style.pointerEvents = "auto"//re-enable interaction with background
 			$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
+			$("body").css({"overflow-y":"auto"})
+			$("html").css({"overflow-y":"auto"})
 
 			$(this).attr('disabled', true);
 			post(post_uuid);
@@ -363,6 +367,8 @@ define('composer', [
  
 			document.getElementById("panel").style.pointerEvents = "auto"//re-enable interaction with background
 			$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
+			$("body").css({"overflow-y":"auto"})
+			$("html").css({"overflow-y":"auto"})
 
 			e.preventDefault();
 
