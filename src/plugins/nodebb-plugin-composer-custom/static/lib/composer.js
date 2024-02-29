@@ -64,25 +64,27 @@ define('composer', [
 		}
 	});
 
-	function disableBackgroundInteraction(){//establishes css settings for whenever composer appears on screen
-		//prevents interaction with background
-		document.getElementById("panel").style.pointerEvents = "none" 
+	function disableBackgroundInteraction(){ // establishes css settings for whenever composer appears on screen
+		// prevents interaction with background
+		document.getElementById('panel').style.pointerEvents = 'none';
 
-		//adds gray background to draw attention to new post
+		// adds gray background to draw attention to new post
 		$('#gray-overlay').css('visibility', 'visible');
-		//disables scrolling for y axis
-		$("body").css({"overflow-y":"hidden"})
-		$("html").css({"overflow-y":"hidden"}) 
-	}
-	function enableBackgroundInteraction(){//establishes css settings for whenever composer DOES NOT appear on screen
-		//re-enable interaction with background
-		document.getElementById("panel").style.pointerEvents = "auto"
 
-		//turn off gray background
+		// disables scrolling for y axis
+		$('body').css({ 'overflow-y':'hidden' });
+		$('html').css({ 'overflow-y':'hidden' });
+	}
+	function enableBackgroundInteraction(){ // establishes css settings for whenever composer DOES NOT appear on screen
+		// re-enable interaction with background
+		document.getElementById('panel').style.pointerEvents = 'auto';
+
+		// turn off gray background
 		$('#gray-overlay').css('visibility', 'hidden');
-		//re-enables scrolling for y axis
-		$("body").css({"overflow-y":"auto"})
-		$("html").css({"overflow-y":"auto"})
+		
+		// re-enables scrolling for y axis
+		$('body').css({ 'overflow-y':'auto' });
+		$('html').css({ 'overflow-y':'auto' });
 	}
 
 	function removeComposerHistory() {
