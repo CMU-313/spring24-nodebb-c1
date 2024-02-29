@@ -837,7 +837,7 @@ define('composer', [
 	};
 
     /* Saves a work in progress post as a draft and closes composer
-    *  input: post_uuid : number
+    *  input: post_uuid : string
     *  output: none
     * */
     composer.saveAsDraft = function (post_uuid) {
