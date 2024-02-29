@@ -22,7 +22,7 @@ describe('Groups', () => {
     before(() => __awaiter(void 0, void 0, void 0, function* () {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        yield Groups.create({
+        Groups.create({
             name: 'Recruiters',
             userTitle: 'Recruiters',
             description: 'Company recruiters',
@@ -53,23 +53,35 @@ describe('Groups', () => {
             accounttype: 'recruiter',
         }));
     }));
-    it('Recruiters group should have one member', (done) => __awaiter(void 0, void 0, void 0, function* () {
-        yield Groups.get('Recruiters', {}, (err, groupObj) => {
+    it('Recruiters group should have one member', (done) => {
+        Groups.get('Recruiters', {}, (err, groupObj) => {
             assert.ifError(err);
             assert.strictEqual(groupObj.name, 'Recruiters');
             assert.strictEqual(groupObj.memberCount, 1);
             done();
-        });
-    }));
-    it('recruiter user should automatically be in the Recruiters group', (done) => __awaiter(void 0, void 0, void 0, function* () {
+        }).catch(() => 'obligatory catch');
+    });
+    // it('with no options, should show group information', (done) => {
+    //     Groups.get('Test', {}, (err, groupObj) => {
+    //         assert.ifError(err);
+    //         assert.equal(typeof groupObj, 'object');
+    //         assert(Array.isArray(groupObj.members));
+    //         assert.strictEqual(groupObj.name, 'Test');
+    //         assert.strictEqual(groupObj.description, 'Foobar!');
+    //         assert.strictEqual(groupObj.memberCount, 1);
+    //         assert.equal(typeof groupObj.members[0], 'object');
+    //         done();
+    //     });
+    // });
+    it('recruiter user should automatically be in the Recruiters group', (done) => {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        yield Groups.isMember(recruiterUid, 'Recruiters', (err, isMember) => {
+        Groups.isMember(recruiterUid, 'Recruiters', (err, isMember) => {
             assert.ifError(err);
             assert.strictEqual(isMember, true);
             done();
         });
-    }));
+    });
     it('student user should not be in the Recruiters group', (done) => {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call

@@ -21,7 +21,7 @@ describe('Groups', () => {
     before(async () => {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        await Groups.create({
+        Groups.create({
             name: 'Recruiters',
             userTitle: 'Recruiters',
             description: 'Company recruiters',
@@ -56,20 +56,20 @@ describe('Groups', () => {
         }) as number;
     });
 
-    it('Recruiters group should have one member', async (done) => {
-        await Groups.get('Recruiters', {}, (err, groupObj: GroupTest) => {
+    it('Recruiters group should have one member', (done) => {
+        Groups.get('Recruiters', {}, (err, groupObj : GroupTest) => {
             assert.ifError(err);
             assert.strictEqual(groupObj.name, 'Recruiters');
             assert.strictEqual(groupObj.memberCount, 1);
 
             done();
-        });
+        }).catch(() => 'obligatory catch');
     });
 
-    it('recruiter user should automatically be in the Recruiters group', async (done) => {
+    it('recruiter user should automatically be in the Recruiters group', (done) => {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        await Groups.isMember(recruiterUid, 'Recruiters', (err, isMember) => {
+        Groups.isMember(recruiterUid, 'Recruiters', (err, isMember) => {
             assert.ifError(err);
             assert.strictEqual(isMember, true);
             done();
