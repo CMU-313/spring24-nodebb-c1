@@ -64,6 +64,29 @@ define('composer', [
 		}
 	});
 
+	function newPostCSS(){
+		//prevents interaction with background
+		document.getElementById("panel").style.pointerEvents = "none" 
+
+		//adds gray background to draw attention to new post
+		$('#gray-overlay').css('visibility', 'visible');
+
+		//disables scrolling for y axis
+		$("body").css({"overflow-y":"hidden"})
+		$("html").css({"overflow-y":"hidden"}) 
+	}
+	function closePostCSS(){
+		//re-enable interaction with background
+		document.getElementById("panel").style.pointerEvents = "auto"
+
+		//turn off gray background
+		$('#gray-overlay').css('visibility', 'hidden');
+
+		//re-enables scrolling for y axis
+		$("body").css({"overflow-y":"auto"})
+		$("html").css({"overflow-y":"auto"})
+	}
+
 	function removeComposerHistory() {
 		var env = composer.bsEnvironment;
 		if (ajaxify.data.template.compose === true || env === 'xs' || env === 'sm') {
@@ -310,10 +333,6 @@ define('composer', [
 			This method enhances a composer container with client-side sugar (preview, etc)
 			Everything in here also applies to the /compose route
 		*/
-		document.getElementById("panel").style.pointerEvents = "none" 
-		$('#gray-overlay').css('visibility', 'visible');//gray background also needs to be shown
-		$("body").css({"overflow-y":"hidden"})
-		$("html").css({"overflow-y":"hidden"}) //disables scrolling
 		if (!post_uuid && !postData) {
 			post_uuid = utils.generateUUID();
 			composer.posts[post_uuid] = ajaxify.data;
@@ -335,6 +354,8 @@ define('composer', [
 		tags.init(postContainer, composer.posts[post_uuid]);
 		autocomplete.init(postContainer, post_uuid);
 
+		newPostCSS();//apply css changes when a new post draft is created
+
 		postContainer.on('change', 'input, textarea', function () {
 			composer.posts[post_uuid].modified = true;
 
@@ -347,10 +368,7 @@ define('composer', [
 			e.preventDefault();
 			e.stopPropagation(); // Other click events bring composer back to active state which is undesired on submit
 
-			document.getElementById("panel").style.pointerEvents = "auto"//re-enable interaction with background
-			$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
-			$("body").css({"overflow-y":"auto"})
-			$("html").css({"overflow-y":"auto"})
+			closePostCSS();//revert css changes after a submission is made
 
 			$(this).attr('disabled', true);
 			post(post_uuid);
@@ -365,10 +383,7 @@ define('composer', [
 
 		postContainer.find('.composer-discard').on('click', function (e) {
  
-			document.getElementById("panel").style.pointerEvents = "auto"//re-enable interaction with background
-			$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
-			$("body").css({"overflow-y":"auto"})
-			$("html").css({"overflow-y":"auto"})
+			closePostCSS();//revert changes after a submission is discarded
 
 			e.preventDefault();
 
@@ -392,6 +407,7 @@ define('composer', [
 		});
 
 		postContainer.find('.composer-minimize, .minimize .trigger').on('click', function (e) {
+			closePostCSS();
 			e.preventDefault();
 			e.stopPropagation();
 			composer.minimize(post_uuid);
@@ -617,7 +633,7 @@ define('composer', [
 		if (composer.active && composer.active !== post_uuid) {
 			composer.minimize(composer.active);
 		}
-
+		newPostCSS(); //apply css changes when a new post draft is unminimized
 		composer.active = post_uuid;
 		$(window).trigger('action:composer.activate', {
 			post_uuid: post_uuid,
@@ -840,11 +856,13 @@ define('composer', [
 		postContainer.css('visibility', 'hidden');
 		composer.active = undefined;
 		taskbar.minimize('composer', post_uuid);
+		
 		$(window).trigger('action:composer.minimize', {
 			post_uuid: post_uuid,
 		});
 
 		onHide();
+		closePostCSS(); //revert css changes after a submission is minimized
 	};
 
 	composer.minimizeActive = function () {
