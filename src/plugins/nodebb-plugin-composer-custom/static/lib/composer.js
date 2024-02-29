@@ -64,7 +64,7 @@ define('composer', [
 		}
 	});
 
-	function newPostCSS(){
+	function disableBackgroundInteraction(){//establishes css settings for whenever composer appears on screen
 		//prevents interaction with background
 		document.getElementById("panel").style.pointerEvents = "none" 
 
@@ -75,7 +75,7 @@ define('composer', [
 		$("body").css({"overflow-y":"hidden"})
 		$("html").css({"overflow-y":"hidden"}) 
 	}
-	function closePostCSS(){
+	function enableBackgroundInteraction(){//establishes css settings for whenever composer DOES NOT appear on screen
 		//re-enable interaction with background
 		document.getElementById("panel").style.pointerEvents = "auto"
 
@@ -312,6 +312,7 @@ define('composer', [
 		var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
 		if (postContainer.length) {
 			activate(post_uuid);
+			disableBackgroundInteraction();//disable background interaction when a new post draft is loaded
 			resize.reposition(postContainer);
 			focusElements(postContainer);
 			onShow();
@@ -354,7 +355,7 @@ define('composer', [
 		tags.init(postContainer, composer.posts[post_uuid]);
 		autocomplete.init(postContainer, post_uuid);
 
-		newPostCSS();//apply css changes when a new post draft is created
+		disableBackgroundInteraction();//disable background interaction when a new post draft is created
 
 		postContainer.on('change', 'input, textarea', function () {
 			composer.posts[post_uuid].modified = true;
@@ -368,7 +369,7 @@ define('composer', [
 			e.preventDefault();
 			e.stopPropagation(); // Other click events bring composer back to active state which is undesired on submit
 
-			closePostCSS();//revert css changes after a submission is made
+			enableBackgroundInteraction();//re-enable interaction after post is submitted
 
 			$(this).attr('disabled', true);
 			post(post_uuid);
@@ -382,12 +383,10 @@ define('composer', [
 		});
 
 		postContainer.find('.composer-discard').on('click', function (e) {
- 
-			closePostCSS();//revert changes after a submission is discarded
 
 			e.preventDefault();
-
 			if (!composer.posts[post_uuid].modified) {
+				enableBackgroundInteraction();//re-enable interaction if a submission is discarded without modal popup
 				composer.discard(post_uuid);
 				return removeComposerHistory();
 			}
@@ -407,7 +406,7 @@ define('composer', [
 		});
 
 		postContainer.find('.composer-minimize, .minimize .trigger').on('click', function (e) {
-			closePostCSS();
+			enableBackgroundInteraction();
 			e.preventDefault();
 			e.stopPropagation();
 			composer.minimize(post_uuid);
@@ -633,7 +632,7 @@ define('composer', [
 		if (composer.active && composer.active !== post_uuid) {
 			composer.minimize(composer.active);
 		}
-		newPostCSS(); //apply css changes when a new post draft is unminimized
+		//disableBackgroundInteraction(); //apply css changes when a new post draft is unminimized
 		composer.active = post_uuid;
 		$(window).trigger('action:composer.activate', {
 			post_uuid: post_uuid,
@@ -828,6 +827,7 @@ define('composer', [
 
 	composer.discard = function (post_uuid) {
 		if (composer.posts[post_uuid]) {
+			enableBackgroundInteraction();//if a submission is discarded through the modal, revert css changes
 			var postData = composer.posts[post_uuid];
 			var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
 			postContainer.remove();
@@ -862,7 +862,7 @@ define('composer', [
 		});
 
 		onHide();
-		closePostCSS(); //revert css changes after a submission is minimized
+		enableBackgroundInteraction(); //re-enable interaction after a new post is minimized
 	};
 
 	composer.minimizeActive = function () {
