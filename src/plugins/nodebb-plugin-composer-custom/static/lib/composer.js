@@ -311,6 +311,7 @@ define('composer', [
 			Everything in here also applies to the /compose route
 		*/
 		document.getElementById("panel").style.pointerEvents = "none" 
+		$('#gray-overlay').css('visibility', 'visible');//gray background also needs to be shown
 		if (!post_uuid && !postData) {
 			post_uuid = utils.generateUUID();
 			composer.posts[post_uuid] = ajaxify.data;
@@ -825,6 +826,7 @@ define('composer', [
 	composer.minimize = function (post_uuid) {
 		var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
 		postContainer.css('visibility', 'hidden');
+		$('#gray-overlay').css('visibility', 'hidden');//gray background also needs to be hidden
 		composer.active = undefined;
 		taskbar.minimize('composer', post_uuid);
 		$(window).trigger('action:composer.minimize', {
