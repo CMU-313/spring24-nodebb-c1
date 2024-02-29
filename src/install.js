@@ -420,6 +420,24 @@ async function createGlobalModeratorsGroup() {
     await groups.show('Global Moderators');
 }
 
+async function createRecruitersGroup() {
+    const groups = require('./groups');
+    const exists = await groups.exists('Recruiters');
+    if (exists) {
+        winston.info('Recruiters group found, skipping creation!');
+    } else {
+        await groups.create({
+            name: 'Recruiters',
+            userTitle: 'Recruiters',
+            description: 'Recruiters from companies',
+            hidden: 0,
+            private: 1,
+            disableJoinRequests: 1,
+        });
+    }
+    await groups.show('Recruiters');
+}
+
 async function giveGlobalPrivileges() {
     const privileges = require('./privileges');
     const defaultPrivileges = [
@@ -574,6 +592,7 @@ install.setup = async function () {
         await createDefaultUserGroups();
         const adminInfo = await createAdministrator();
         await createGlobalModeratorsGroup();
+        await createRecruitersGroup();
         await giveGlobalPrivileges();
         await createMenuItems();
         await createWelcomePost();
