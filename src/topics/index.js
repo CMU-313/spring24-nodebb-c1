@@ -28,7 +28,6 @@ require('./follow')(Topics);
 require('./tags')(Topics);
 require('./teaser')(Topics);
 Topics.scheduled = require('./scheduled');
-require('./resolved')(Topics);
 require('./suggested')(Topics);
 require('./tools')(Topics);
 Topics.thumbs = require('./thumbs');
