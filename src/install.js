@@ -420,6 +420,24 @@ async function createGlobalModeratorsGroup() {
     await groups.show('Global Moderators');
 }
 
+async function createRecruitersGroup() {
+    const groups = require('./groups');
+    const exists = await groups.exists('Recruiters');
+    if (exists) {
+        winston.info('Recruiters group found, skipping creation!');
+    } else {
+        await groups.create({
+            name: 'Recruiters',
+            userTitle: 'Recruiters',
+            description: 'Recruiters from companies',
+            hidden: 0,
+            private: 1,
+            disableJoinRequests: 1,
+        });
+    }
+    await groups.show('Recruiters');
+}
+
 async function giveGlobalPrivileges() {
     const privileges = require('./privileges');
     const defaultPrivileges = [
@@ -453,6 +471,37 @@ async function createCategories() {
         // eslint-disable-next-line no-await-in-loop
         await Categories.create(categoryData);
     }
+
+    await createJobPostingsCategory();
+}
+
+async function createJobPostingsCategory() {
+    const Categories = require('./categories');
+    const privileges = require('./privileges');
+
+    const data =
+    {
+        name: 'Job Postings',
+        description: 'Check job postings from recruiters',
+        descriptionParsed: '<p>Check job postings from recruiters</p>\n',
+        bgColor: '#dbb125',
+        color: '#ffffff',
+        icon: 'fa-briefcase',
+        order: 5,
+    };
+    const jobPostings = await Categories.create(data);
+
+    const postingPrivileges = [
+        'groups:topics:create',
+        'groups:posts:edit',
+        'groups:posts:delete',
+        'groups:topics:delete',
+    ];
+
+    await Promise.all([
+        privileges.categories.rescind(postingPrivileges, jobPostings.cid, 'registered-users'),
+        privileges.categories.give(postingPrivileges, jobPostings.cid, 'Recruiters'),
+    ]);
 }
 
 async function createMenuItems() {
@@ -570,11 +619,12 @@ install.setup = async function () {
         await setupConfig();
         await setupDefaultConfigs();
         await enableDefaultTheme();
-        await createCategories();
         await createDefaultUserGroups();
         const adminInfo = await createAdministrator();
         await createGlobalModeratorsGroup();
         await giveGlobalPrivileges();
+        await createRecruitersGroup();
+        await createCategories();
         await createMenuItems();
         await createWelcomePost();
         await enableDefaultPlugins();
