@@ -46,4 +46,5 @@
             <!-- IMPORT partials/paginator.tpl -->
         <!-- ENDIF config.usePagination -->
     </div>
+    <!-- IMPORT partials/gray-overlay.tpl -->
 </div>
