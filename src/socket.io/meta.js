@@ -17,7 +17,7 @@ SocketMeta.reconnected = function (socket, data, callback) {
     callback();
 };
 
-/* Rooms */
+/* Rooms hi */
 
 SocketMeta.rooms.enter = function (socket, data, callback) {
     if (!socket.uid) {
