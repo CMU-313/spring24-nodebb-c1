@@ -1,3 +1,15 @@
+#gray-overlay {
+    background-color: gray;
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	left: 0;
+	visibility: hidden;
+	opacity: 0.1;
+}
+
+//move the above snippet to new .less file
 .define-if-not-set() {
 	@btn-primary-bg: darken(#428bca, 6.5%);
 	@btn-primary-color: #fff;
@@ -23,8 +35,15 @@
 	top: 0;
 	right: 0;
 	left: 0;
+	// min-width: 90%;
+	min-height: 100%;
 
 	.composer-container {
+		position: fixed;
+		// bottom: 0;
+		// top: 0;
+		// right: 0;
+		// left: 0;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -198,6 +217,7 @@
 		flex: 1;
 		margin: 0 15px;
 		position: relative;
+		max-height: 70%;
 
 		.help-text {
 			text-transform: uppercase;
@@ -426,15 +446,15 @@
 		}
 	}
 
-	&.resizable.maximized {
-		.resizer .trigger i {
-			&:before {
-				content: @fa-var-chevron-down;
-			}
-		}
+	// &.resizable.maximized {
+	// 	.resizer .trigger i {
+	// 		&:before {
+	// 			content: @fa-var-chevron-down;
+	// 		}
+	// 	}
 
-		box-shadow: none;
-	}
+	// 	box-shadow: none;
+	// }
 
 	.draft-icon {
 		font-family: 'FontAwesome';
