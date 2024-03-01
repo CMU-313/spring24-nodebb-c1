@@ -61,18 +61,6 @@ describe('Groups', () => {
             done();
         }).catch(() => 'obligatory catch');
     });
-    // it('with no options, should show group information', (done) => {
-    //     Groups.get('Test', {}, (err, groupObj) => {
-    //         assert.ifError(err);
-    //         assert.equal(typeof groupObj, 'object');
-    //         assert(Array.isArray(groupObj.members));
-    //         assert.strictEqual(groupObj.name, 'Test');
-    //         assert.strictEqual(groupObj.description, 'Foobar!');
-    //         assert.strictEqual(groupObj.memberCount, 1);
-    //         assert.equal(typeof groupObj.members[0], 'object');
-    //         done();
-    //     });
-    // });
     it('recruiter user should automatically be in the Recruiters group', (done) => {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
