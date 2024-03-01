@@ -19,12 +19,12 @@ module.exports = function (SocketTopics) {
 
     SocketTopics.markResolved = async function (socket, tid) {
         console.log('socket resolved');
-        await topics.markAsResolved(tid);
+        // await topics.markAsResolved(tid);
     };
 
     SocketTopics.markUnresolved = async function (socket, tid) {
         console.log('socket unresolved');
-        await topics.markAsUnresolved(tid);
+        // await topics.markAsUnresolved(tid);
     };
 
     SocketTopics.markTopicNotificationsRead = async function (socket, tids) {
