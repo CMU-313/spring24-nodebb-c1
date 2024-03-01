@@ -1,9 +1,9 @@
 # User Guide
 
 ## Custom Composer Feature
-To use some of the new features implemented, the default composer plugin must be deactivated with a custom plugin installed. The custom plugin can be found in `/src/plugins/nodebb-composer-custom`. Once are accessing that directory, please do the following:
+To use some of the new features implemented, the default composer plugin must be deactivated with a custom plugin installed. The custom plugin can be found in `/src/plugins/nodebb-plugin-composer-custom`. Once are accessing that directory, please do the following:
 - Run `npm link` in the composer’s directory
-- Return to the root directory, and run `npm link nodebb-composer-custom` in the root directory
+- Return to the root directory, and run `npm link nodebb-plugin-composer-custom` in the root directory
 - Start NodeBB, log in using an admin account, and visit the admin panel
 - Under the “Plugins” tab, select “Install Plugins”
 - After being redirected, click on “Installed” button, directly to the right of trending button
