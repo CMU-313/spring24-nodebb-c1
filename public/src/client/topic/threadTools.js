@@ -80,7 +80,7 @@ define('forum/topic/threadTools', [
                     ajaxify.go('category/' + ajaxify.data.category.slug, handleBack.onBackClicked);
                 }
 
-                alerts.success('[[topic:mark_resolved.success]]');
+                alerts.success('mark_resolved.success');
             });
             return false;
         });
@@ -100,7 +100,7 @@ define('forum/topic/threadTools', [
                     ajaxify.go('category/' + ajaxify.data.category.slug, handleBack.onBackClicked);
                 }
 
-                alerts.success('[[topic:mark_unresolved.success]]');
+                alerts.success('mark_resolved.success');
             });
             return false;
         });
