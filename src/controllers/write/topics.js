@@ -67,13 +67,13 @@ Topics.purge = async (req, res) => {
 };
 
 Topics.resolve = async (req, res) => {
-    console.log("controllers.write.resolve")
+    console.log('controllers.write.resolve');
     await api.topics.resolve(req, { tids: [req.params.tid] });
     helpers.formatApiResponse(200, res);
 };
 
 Topics.unresolve = async (req, res) => {
-    console.log("controllers.write.unresolve")
+    console.log('controllers.write.unresolve');
     await api.topics.resolve(req, { tids: [req.params.tid] });
     helpers.formatApiResponse(200, res);
 };

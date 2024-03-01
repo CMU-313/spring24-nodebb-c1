@@ -18,15 +18,15 @@ module.exports = function (SocketTopics) {
     };
 
     SocketTopics.markResolved = async function (socket, tid) {
-        console.log("socket resolved");
+        console.log('socket resolved');
         await topics.markAsResolved(tid);
     };
 
     SocketTopics.markUnresolved = async function (socket, tid) {
-        console.log("socket unresolved");
+        console.log('socket unresolved');
         await topics.markAsUnresolved(tid);
     };
-    
+
     SocketTopics.markTopicNotificationsRead = async function (socket, tids) {
         if (!Array.isArray(tids) || !socket.uid) {
             throw new Error('[[error:invalid-data]]');

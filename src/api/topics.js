@@ -154,6 +154,6 @@ topicsAPI.unfollow = async function (caller, data) {
 };
 
 topicsAPI.resolve = async function (caller, data) {
-    console.log("topicsAPI");
+    console.log('topicsAPI');
     await topics.markAsResolved(data.tid, caller.uid);
 };

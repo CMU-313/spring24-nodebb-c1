@@ -66,7 +66,7 @@ define('forum/topic/threadTools', [
             });
         });
         topicContainer.on('click', '[component="topic/mark-resolved"]', function () {
-            console.log("clicked");
+            console.log('clicked');
             socket.emit('topics.markResolved', tid, function (err) {
                 if (err) {
                     return alerts.error(err);
@@ -86,7 +86,7 @@ define('forum/topic/threadTools', [
         });
 
         topicContainer.on('click', '[component="topic/mark-unresolved"]', function () {
-            console.log("unresolve clicked");
+            console.log('unresolve clicked');
             socket.emit('topics.markUnresolved', tid, function (err) {
                 if (err) {
                     return alerts.error(err);
