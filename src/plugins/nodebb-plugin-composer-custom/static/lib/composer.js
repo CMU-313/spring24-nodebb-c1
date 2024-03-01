@@ -334,6 +334,7 @@ define('composer', [
 			This method enhances a composer container with client-side sugar (preview, etc)
 			Everything in here also applies to the /compose route
 		*/
+		document.getElementById('panel').style.pointerEvents = 'panel';
 		if (!post_uuid && !postData) {
 			post_uuid = utils.generateUUID();
 			composer.posts[post_uuid] = ajaxify.data;
@@ -368,6 +369,7 @@ define('composer', [
 		submitBtn.on('click', function (e) {
 			e.preventDefault();
 			e.stopPropagation(); // Other click events bring composer back to active state which is undesired on submit
+			document.getElementById('panel').style.pointerEvents = 'panel';
 
 			enableBackgroundInteraction(); // re-enable interaction after post is submitted
 
@@ -382,7 +384,25 @@ define('composer', [
 			});
 		});
 
+		/* JavaScript event listener
+		*  input type : object
+		*  output None
+		*  Calls the save as draft function on a post when the save draft button is clicked
+		*  */
+		postContainer.find('.composer-draft').on('click', function (e) {
+			console.assert(typeof e === 'object');
+
+			document.getElementById('panel').style.pointerEvents = 'auto';
+			e.preventDefault();
+
+			composer.saveAsDraft(post_uuid);
+
+			formatting.exitFullscreen();
+		});
+
+
 		postContainer.find('.composer-discard').on('click', function (e) {
+			document.getElementById('panel').style.pointerEvents = 'auto';
 			e.preventDefault();
 			if (!composer.posts[post_uuid].modified) {
 				enableBackgroundInteraction(); // re-enable interaction if a submission is discarded without modal popup
@@ -844,6 +864,15 @@ define('composer', [
 		}
 		scheduler.reset();
 		onHide();
+	};
+
+	/* Saves a work in progress post as a draft and closes composer
+	*  input: post_uuid : string
+	*  output: none
+	* */
+	composer.saveAsDraft = function (post_uuid) {
+		console.assert(typeof post_uuid === 'string');
+		composer.minimize(post_uuid);
 	};
 
 	// Alias to .discard();

@@ -57,7 +57,7 @@ define('composer/formatting', [
 					postContainer.find('.write').focus();
 
 					$(window).on('resize', onResize);
-					$(window).one('action:composer.topics.post action:composer.posts.reply action:composer.posts.edit action:composer.discard', screenfull.exit);
+					$(window).one('action:composer.topics.post action:composer.posts.reply action:composer.posts.edit action:composer.discard action:composer.saveAsDraft', screenfull.exit);
 				}
 			});
 
