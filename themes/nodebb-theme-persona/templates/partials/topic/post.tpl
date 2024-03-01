@@ -11,6 +11,10 @@
             <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}">{posts.user.displayname}</a>
         </strong>
 
+        {{{ if (posts.user.accounttype == "recruiter") }}}
+            <i class="fa fa-briefcase recruiter-badge"></i>
+        {{{ end }}}
+
         <!-- IMPORT partials/topic/badge.tpl -->
 
         <!-- IF posts.user.banned -->

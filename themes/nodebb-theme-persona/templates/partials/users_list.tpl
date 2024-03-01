@@ -6,6 +6,9 @@
         <span>
             <i component="user/status" class="fa fa-circle status {users.status}" title="[[global:{users.status}]]"></i>
             <a href="{config.relative_path}/user/{users.userslug}">{users.username}</a>
+            {{{ if (users.accounttype == "recruiter") }}}
+                <i class="fa fa-briefcase recruiter-badge"></i>
+            {{{ end }}}
         </span>
         <br/>
 

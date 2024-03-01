@@ -18,20 +18,15 @@
 				<i class="fa fa-clock-o"></i>
 			</div>
 			<div class="btn-group">
-				<button class="btn btn-sm btn-danger composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
+				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</nav>
 		<div class="row title-container">
-			<div class="draft-list-container hidden-sm hidden-xs">
-				<!-- IMPORT partials/draft-selector.tpl -->
-			</div>
 			{{{ if isTopic }}}
 			<div class="category-list-container hidden-sm hidden-xs">
 				<!-- IMPORT partials/category-selector.tpl -->
 			</div>
 			{{{ end }}}
-
-
 
 			<!-- IF showHandleInput -->
 			<div data-component="composer/handle">
@@ -56,9 +51,9 @@
 				<i class="fa fa-clock-o"></i>
 			</div>
 
-			<div class="btn-group pull-right action-bar hidden-sm hidden-xs ">
+			<div class="btn-group pull-right action-bar hidden-sm hidden-xs">
 				<button class="btn btn-default composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i> [[topic:composer.discard]]</button>
-				<button class="btn btn-success composer-draft" data-action="saveAsDraft" tabindex="-1"><i class="fa fa-pen"></i> Save as Draft</button>
+
 				<ul class="dropdown-menu">{{{ each submitOptions }}}<li><a href="#" data-action="{./action}">{./text}</a></li>{{{ end }}}</ul>
 				<button class="btn btn-primary composer-submit" data-action="post" tabindex="6" data-text-variant=" [[topic:composer.schedule]]"><i class="fa fa-check"></i> [[topic:composer.submit]]</button>
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,4 +135,5 @@
 
 		<div class="resizer"><div class="trigger text-center"><i class="fa"></i></div></div>
 	</div>
+
 </div>

@@ -92,6 +92,12 @@
             <small>[[global:views]]</small>
         </div>
 
+        <div class="col-md-1 hidden-sm hidden-xs stats ">
+            <!-- IF !reputation:disabled -->
+            <small>Unresolved</small>
+            <!-- END -->
+        </div>
+
         <div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
             <div class="card background-link-container" style="border-color: {topics.category.bgColor}">
                 <a class="background-link" href="{config.relative_path}/topic/{topics.slug}/{topics.teaser.index}"></a>
