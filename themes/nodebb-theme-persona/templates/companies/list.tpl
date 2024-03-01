@@ -8,7 +8,9 @@
     <div class="row">
         <div class="col-lg-4">
             <!-- IF allowGroupCreation -->
+            {{{ if (accounttype != "student") }}}
             <button class="btn btn-primary" data-action="new"><i class="fa fa-plus"></i> Create New Company</button>
+            {{{ end }}}
             <!-- ENDIF allowGroupCreation -->
         </div>
         <div class="col-lg-8">
