@@ -58,7 +58,7 @@
 
 			<div class="btn-group pull-right action-bar hidden-sm hidden-xs ">
 				<button class="btn btn-default composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i> [[topic:composer.discard]]</button>
-				<button class="btn btn-success composer-draft" data-action="saveAsDraft" tabindex="-1"><i class="fa fa-pen"></i> Save as Draft</button>
+				<button class="btn btn-success composer-draft" data-action="saveAsDraft" tabindex="-1"><i class="fa fa-pen"></i> Save as Draft </button>
 				<ul class="dropdown-menu">{{{ each submitOptions }}}<li><a href="#" data-action="{./action}">{./text}</a></li>{{{ end }}}</ul>
 				<button class="btn btn-primary composer-submit" data-action="post" tabindex="6" data-text-variant=" [[topic:composer.schedule]]"><i class="fa fa-check"></i> [[topic:composer.submit]]</button>
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
