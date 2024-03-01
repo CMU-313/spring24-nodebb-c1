@@ -93,9 +93,7 @@
         </div>
 
         <div class="col-md-1 hidden-sm hidden-xs stats ">
-            <!-- IF !reputation:disabled -->
             <small>Unresolved</small>
-            <!-- END -->
         </div>
 
         <div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
