@@ -13,3 +13,6 @@
 <div class="stats text-muted">
     <small>Unresolved</small>
 </div>
+<div class="stats text-muted">
+    <span component="topic/resolved" title="{resolved}">{resolved}</span>
+</div>

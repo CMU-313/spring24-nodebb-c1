@@ -152,3 +152,8 @@ topicsAPI.ignore = async function (caller, data) {
 topicsAPI.unfollow = async function (caller, data) {
     await topics.unfollow(data.tid, caller.uid);
 };
+
+topicsAPI.resolve = async function (caller, data) {
+    console.log("topicsAPI");
+    await topics.markAsResolved(data.tid, caller.uid);
+};

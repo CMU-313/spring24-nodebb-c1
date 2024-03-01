@@ -92,6 +92,10 @@
             <small>[[global:views]]</small>
         </div>
 
+        <div class="col-md-1 hidden-sm hidden-xs stats stats-resolved">
+            <small title="{topics.resolved}">{{{if topics.resolved}}} Resolved {{{end}}} {{{if !topics.resolved}}} Unresolved {{{end}}}</small>
+        </div>
+        
         <div class="col-md-1 hidden-sm hidden-xs stats ">
             <!-- IF !reputation:disabled -->
             <small>Unresolved</small>

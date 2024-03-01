@@ -65,6 +65,45 @@ define('forum/topic/threadTools', [
                 }
             });
         });
+        topicContainer.on('click', '[component="topic/mark-resolved"]', function () {
+            console.log("clicked");
+            socket.emit('topics.markResolved', tid, function (err) {
+                if (err) {
+                    return alerts.error(err);
+                }
+
+                if (app.previousUrl && !app.previousUrl.match('^/topic')) {
+                    ajaxify.go(app.previousUrl, function () {
+                        handleBack.onBackClicked(true);
+                    });
+                } else if (ajaxify.data.category) {
+                    ajaxify.go('category/' + ajaxify.data.category.slug, handleBack.onBackClicked);
+                }
+
+                alerts.success('[[topic:mark_resolved.success]]');
+            });
+            return false;
+        });
+
+        topicContainer.on('click', '[component="topic/mark-unresolved"]', function () {
+            console.log("unresolve clicked");
+            socket.emit('topics.markUnresolved', tid, function (err) {
+                if (err) {
+                    return alerts.error(err);
+                }
+
+                if (app.previousUrl && !app.previousUrl.match('^/topic')) {
+                    ajaxify.go(app.previousUrl, function () {
+                        handleBack.onBackClicked(true);
+                    });
+                } else if (ajaxify.data.category) {
+                    ajaxify.go('category/' + ajaxify.data.category.slug, handleBack.onBackClicked);
+                }
+
+                alerts.success('[[topic:mark_unresolved.success]]');
+            });
+            return false;
+        });
 
         // todo: should also use topicCommand, but no write api call exists for this yet
         topicContainer.on('click', '[component="topic/mark-unread"]', function () {
@@ -266,6 +305,11 @@ define('forum/topic/threadTools', [
                 },
             });
         });
+    };
+
+    ThreadTools.updateResolved = function (resolved) {
+        const resolvedEl = components.get('topic/resolved');
+        resolvedEl.html(resolved).attr('title', resolved);
     };
 
     ThreadTools.setLockedState = function (data) {
