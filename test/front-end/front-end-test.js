@@ -1,3 +1,9 @@
+// This file uses the puppeteer library to test front end interactions
+// It currently takes screenshots of the login page, the login information, the post-login page,
+// and the general discussion page.
+
+'use strict';
+
 const puppeteer = require('puppeteer');
 
 (async () => {
