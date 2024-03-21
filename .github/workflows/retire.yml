@@ -15,6 +15,7 @@ jobs:
     - name: Run Retire.js
       id: scanner
       run: |
+        npm install retire
         scan_output=$(retire)
         echo "::set-output name=scan_output::$scan_output"
 
