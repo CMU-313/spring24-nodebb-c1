@@ -16,7 +16,7 @@ jobs:
       id: scanner
       run: |
         npm install retire
-        scan_output=$(retire)
+        scan_output=$(npx retire)
         echo "::set-output name=scan_output::$scan_output"
 
     - name: Comment on PR
