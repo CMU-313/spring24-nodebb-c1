@@ -1,0 +1,34 @@
+name: Comment Retire.js output
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  scan-and-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Retire.js
+      id: scanner
+      run: |
+        npm install retire
+        scan_output=$(npx retire)
+        echo "::set-output name=scan_output::$scan_output"
+
+    - name: Comment on PR
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const output = `${{ steps.scanner.outputs.scan_output }}`;
+          const issue_number = context.issue.number;
+          const commentBody = `🔍 **Vulnerabliilty Scanner Results:**\n\`\`\`\n${output}\n\`\`\``;
+          github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: issue_number,
+            body: commentBody
+          });
