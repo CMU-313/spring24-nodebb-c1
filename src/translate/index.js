@@ -1,4 +1,4 @@
-const fetch = require("node-fetch")
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 var request = require('request')
 
 const translatorApi = module.exports;
