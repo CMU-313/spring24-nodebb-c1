@@ -174,7 +174,8 @@
         "nyc": "15.1.0",
         "retire": "^5.0.0-beta.1",
         "smtp-server": "3.11.0",
-        "typescript": "^4.9.4"
+        "typescript": "^4.9.4",
+        "puppeteer" : "14.0.0"
     },
     "resolutions": {
         "*/jquery": "3.6.3"
