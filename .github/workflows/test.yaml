@@ -134,6 +134,7 @@ jobs:
               "postgres:username": "postgres",
               "postgres:password": "postgres",
               "postgres:database": "nodebb"
+              "TRANSLATOR_API": "https://translator-service-cwmfb7fbpq-uc.a.run.app"
             }
           CI: >-
             {
