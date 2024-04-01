@@ -19,6 +19,9 @@ post:
             content:
               type: string
               example: This is the test topic's content
+            isEnglish:
+              type: boolean
+              example: true
             tags:
               type: array
               items:
@@ -28,6 +31,7 @@ post:
             - cid
             - title
             - content
+            - isEnglish
   responses:
     '200':
       description: topic successfully created
@@ -44,3 +48,8 @@ post:
                   - type: object
                     properties:
                       mainPost: {}
+                      isEnglish:
+                        type: boolean
+
+
+              
