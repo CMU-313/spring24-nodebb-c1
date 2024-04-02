@@ -1,6 +1,11 @@
 PostObject:
   description: A single post in the array returned from `Posts.getPostSummaryByPids`
   type: object
+  required:
+    - pid
+    - tid
+    - content
+    - uid
   properties:
     pid:
       type: number
@@ -25,6 +30,12 @@ PostObject:
     timestampISO:
       type: string
       description: An ISO 8601 formatted date string (complementing `timestamp`)
+    translatedContent:
+      type: string
+      nullable: true
+    isEnglish:
+      type: boolean
+      nullable: true
     user:
       type: object
       properties:
