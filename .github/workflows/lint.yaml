@@ -29,6 +29,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       TEST_ENV: ${{ matrix.test_env || 'production' }}
+      TRANSLATOR_API_KEY: ${{ secrets.TRANSLATOR_API_KEY }}
 
     services:
       mongo:
