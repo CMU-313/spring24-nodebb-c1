@@ -1,10 +1,11 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-var request = require('request')
+// eslint-disable-next-line strict
+require('dotenv').config();
 
 const translatorApi = module.exports;
+const translatorApiKey = process.env.TRANSLATOR_API;
 
 translatorApi.translate = async function (postData) {
-    const response = await fetch(process.env.TRANSLATOR_API+'/?content='+postData.content);
+    const response = await fetch(`${translatorApiKey}/?content=${postData.content}`);
     const data = await response.json();
-    return [data["is_english"], data["translated_content"]]
-}
+    return [data.is_english, data.translated_content];
+};
