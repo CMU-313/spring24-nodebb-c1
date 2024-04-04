@@ -1,5 +1,6 @@
 // eslint-disable-next-line strict
 require('dotenv').config();
+const fetch = require('node-fetch');
 
 const translatorApi = module.exports;
 const translatorApiKey = process.env.TRANSLATOR_API;
