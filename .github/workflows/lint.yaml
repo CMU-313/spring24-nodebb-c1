@@ -76,6 +76,7 @@ jobs:
               "port": 27017,
               "database": "ci_test"
             }
+          TRANSLATOR_API_KEY: ${{ secrets.TRANSLATOR_API_KEY }}
         run: |
           node app --setup="${SETUP}" --ci="${CI}"
 
