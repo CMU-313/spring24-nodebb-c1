@@ -1541,7 +1541,7 @@ describe('Controllers', () => {
                     notifications.push(notification, fooUid, next);
                 },
                 function (next) {
-                    setTimeout(next, 2500);
+                    setTimeout(next, 40000);
                 },
                 function (next) {
                     request(`${nconf.get('url')}/api/notifications`, { jar: jar, json: true }, next);

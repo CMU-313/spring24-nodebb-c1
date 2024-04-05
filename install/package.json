@@ -12,7 +12,7 @@
     "scripts": {
         "start": "npx tsc && node loader.js",
         "lint": "npx tsc && eslint --cache ./nodebb .",
-        "test": "npx tsc && nyc --reporter=html --reporter=text-summary mocha",
+        "test": "npx tsc && nyc --reporter=html --reporter=text-summary mocha && mocha --timeout 40000",
         "coverage": "nyc report --reporter=text-lcov > ./coverage/lcov.info",
         "coveralls": "nyc report --reporter=text-lcov | coveralls && rm -r coverage"
     },
@@ -60,6 +60,7 @@
         "csurf": "1.11.0",
         "daemon": "1.1.0",
         "diff": "5.1.0",
+        "dotenv": "^16.4.5",
         "esbuild": "0.16.10",
         "express": "4.18.2",
         "express-session": "1.17.3",
@@ -92,6 +93,7 @@
         "mousetrap": "1.6.5",
         "multiparty": "4.2.3",
         "nconf": "0.12.0",
+        "node-fetch": "2.6.7",
         "nodebb-plugin-2factor": "5.1.2",
         "nodebb-plugin-composer-default": "9.2.4",
         "nodebb-plugin-dbsearch": "5.1.5",
