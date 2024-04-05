@@ -3,11 +3,11 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 
 const translatorApi = module.exports;
-const translatorApiUrl = process.env.TRANSLATOR_API; // Assuming this includes the full base URL
+const translatorApiUrl = 'https://translator-service-cwmfb7fbpq-uc.a.run.app';
 
 translatorApi.translate = async function (postData) {
     // Construct the request URL
-    const requestUrl = `${translatorApiUrl}/?content=${encodeURIComponent(postData.content)}`;
+    const requestUrl = `${translatorApiUrl}/?content=${postData.content}`;
 
     try {
         const response = await fetch(requestUrl);
