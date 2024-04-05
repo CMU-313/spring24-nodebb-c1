@@ -75,7 +75,7 @@ jobs:
             {
               "host": "127.0.0.1",
               "port": 27017,
-              "database": "ci_test"
+              "database": "0"
             }
           TRANSLATOR_API_KEY: ${{ secrets.TRANSLATOR_API_KEY }}
         run: |
