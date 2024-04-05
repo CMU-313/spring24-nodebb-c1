@@ -23,6 +23,8 @@ get:
                 $ref: ../../components/schemas/Status.yaml#/Status
               response:
                 type: object
+                required:
+                  - pid
                 properties:
                   pid:
                     type: number
@@ -63,6 +65,10 @@ get:
                   upvoted:
                     type: boolean
                   downvoted:
+                    type: boolean
+                  translatedContent:
+                    type: string
+                  isEnglish:
                     type: boolean
 put:
   tags:
